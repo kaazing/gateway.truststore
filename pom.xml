@@ -15,7 +15,7 @@
     </parent>
 
     <artifactId>gateway.truststore</artifactId>
-    <version>1.0.0.57-SNAPSHOT</version>
+    <version>1.0.0.57</version>
     <packaging>jar</packaging>
 
     <name>Kaazing WebSocket Gateway - Truststore</name>
