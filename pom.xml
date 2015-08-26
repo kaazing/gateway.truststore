@@ -10,8 +10,8 @@
 
     <parent>
         <groupId>org.kaazing</groupId>
-        <artifactId>common</artifactId>
-        <version>2.1.0.4</version>
+        <artifactId>community</artifactId>
+        <version>2.15</version>
     </parent>
 
     <artifactId>gateway.truststore</artifactId>
@@ -44,6 +44,27 @@
                         <id>truststore</id>
                         <goals>
                             <goal>generate-truststore</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Hack to create a target dir, the truststore maven plugin currently trips up over this if it 
+                is not already done: https://github.com/kaazing/truststore-maven-plugin/issues/5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <tasks>
+                                <echo message="Creating test output directory" />
+                                <mkdir dir="./target/" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
                         </goals>
                     </execution>
                 </executions>
